@@ -1,0 +1,24 @@
+:root{
+--bg-notifiche:      #8EDAFC;
+--icons:             #B1B1B1;
+--bg-green:          #D5F9BA;
+--bg-active:         #E9EBEB;
+--bg-cornice:        #EAEAEA;
+--nots-color:        #639DB8;
+}
+body{background-color: rgb(219, 217, 217);}
+img{width: 40px; border-radius: 50%;}
+#left-cols {background-color: var(--bg-cornice); padding: 0; height: 90vh;}
+#right-cols{background-color: cadetblue; height: 90vh;}
+
+.container{position: relative;}
+.user_icons{color: var(--icons);}
+.nots{background-color: var(--bg-notifiche);}
+.nots i{background-color: white;color: var(--bg-notifiche); border-radius: 50%;}
+.nots_text p, .avatar_text p{margin: 0; font-size: 12px;}
+.nots .under_gray{color: var(--nots-color);}
+.avatars .under_gray{color: var(--icons);}
+.avatars{background-color: white; overflow-y: scroll;}
+
+
+
