@@ -64,7 +64,7 @@
                                 <div class="search">
                                     <div id="search" class="d-flex align-items-center p-2">
                                         <i class="fa-solid fa-search bg-white p-2 ps-3"></i>
-                                        <input class="flex-grow-1 border-0 p-1" type="text" name="" id="" placeholder=" Cerca o inizia una nuova chat" v-model="search">
+                                        <input class="flex-grow-1 border-0 p-1" type="text" name="" id="" placeholder=" Cerca o inizia una nuova chat" @keyup="filterChat" v-model="search">
                                     </div>
                                 </div>
                                 <!-- /.search -->
@@ -74,8 +74,9 @@
                                     v-for="(contact, index) in contacts"  
                                     :class="index === activeContact ? 'active' :'' " 
                                     @click="selectContact(index)"
-                                    v-if="(contact, index) in filteredList"
+                                    v-if="contact.visible"
                                     >
+
                                         <div class="col-2 d-flex justify-content-center align-items-center">
                                             <img :src="'./assets/img/avatar' + contact.avatar + '.jpg'">
                                         </div>

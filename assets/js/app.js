@@ -208,13 +208,15 @@ const app = new Vue ({
             return hour +':'+ minutes;		
         },
         
-    },
-    computed: {
-        filteredList() {
-            return this.contacts.filter((contact) => {
-                return contact.name.toLowerCase().includes(this.search.toLowerCase());
+        filterChat() {
+            this.contacts.forEach(contact => {
+                if (contact.name.toLowerCase().includes(this.search.toLowerCase())) {
+                    contact.visible = true
+                } else {
+                    contact.visible = false
+                }
             });
-        }
-    },
+        },
+    }
 });
 
