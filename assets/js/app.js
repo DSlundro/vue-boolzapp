@@ -201,14 +201,11 @@ const app = new Vue ({
         // funzione per ottendere la data attuale
         getDateTime(){
             let now = new Date();
-            let dd = String(now.getDate()).padStart(2, '0');
-            let mm = String(now.getMonth() + 1).padStart(2, '0'); 
-            let yyyy = now.getFullYear();
+
             let hour = now.getHours();
             let minutes = now.getMinutes();
-            let seconds = now.getSeconds();
-            
-            return dd + '/' + mm + '/' + yyyy + ' ' +  hour +':'+ minutes +':'+ seconds;		
+    
+            return hour +':'+ minutes;		
         },
     },
 });
