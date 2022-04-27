@@ -207,6 +207,14 @@ const app = new Vue ({
     
             return hour +':'+ minutes;		
         },
+        
+    },
+    computed: {
+        filteredList() {
+            return this.contacts.filter((contact) => {
+                return contact.name.toLowerCase().includes(this.search.toLowerCase());
+            });
+        }
     },
 });
 
