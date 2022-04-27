@@ -9,10 +9,10 @@
 body{background-color: rgb(219, 217, 217);}
 img{width: 40px; border-radius: 50%;}
 input:active{border: none;}
-#left-cols {background-color: var(--bg-cornice); padding: 0; height: 90vh;}
-#right-cols{background-color:var(--bg-cornice); padding: 0; height: 90vh;}
+#left-cols {background-color:var(--bg-cornice); padding: 0; height: 90vh;}
+#right-cols{background-color:var(--bg-cornice); padding: 0; height: 90vh; border-left: 1px solid var(--icons);}
 
-.container{position: relative;}
+.container{padding: 5vh 0;}
 .user_icons{color: var(--icons);}
 .nots{background-color: var(--bg-notifiche);}
 .nots i{background-color: white;color: var(--bg-notifiche); border-radius: 50%;}
@@ -34,9 +34,19 @@ input:active{border: none;}
     overflow-y: scroll;
 }
 
+.sent{
+    background-color: var(--bg-green);
+    align-self: flex-end;
+    width: 35%;
+}
+.recived{
+    background-color: white;
+    align-self: start;
+    width: 35%;
+}
+
 #chat_input{height: 56px;}
 #chat_input h5{color: var(--icons);}
-.container{padding: 5vh 0;}
 @media screen and (max-width: 1200px){
     .avatars{background-color: white; overflow-y: scroll; height: calc(90vh - 190px);}
 }

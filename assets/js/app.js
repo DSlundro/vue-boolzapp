@@ -1,5 +1,6 @@
 const app = new Vue ({
     el: '#app',
+    activeContact: 0,
     data: {
         contacts: [
             {
