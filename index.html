@@ -83,10 +83,10 @@
                                         <div class="col-10">
                                             <div class="avatar_text">
                                                 <p class="fw-bold">{{contact.name}}</p>
-                                                <p class="under_gray">Ultimo messaggio inviato</p>
+                                                <p class="under_gray">{{ contact.messages.at(-1).message }}</p>
                                             </div>
                                             <div class="time">
-                                                12:00
+                                                {{ contact.messages.at(-1).date.slice(-8,-3) }}
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@
                                         <div class="box sent" v-for="(element,index) in contacts[activeContact].messages" 
                                         :class="(element.status === 'sent') ? 'sent' : 'recieved'">
                                             <p class="chat_msg mb-1">{{element.message}}</p> 
-                                            <p class="chat_time text-end m-0">{{element.date}}</p>
+                                            <p class="chat_time text-end m-0">{{element.date.slice(-8,-3)}}</p>
                                         </div>
                                     </div>
                                 </div>
