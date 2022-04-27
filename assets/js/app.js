@@ -2,6 +2,8 @@ const app = new Vue ({
     el: '#app',
     data: {
         activeContact: 0,
+        newMessageContainer: '',
+        search:'',
         contacts: [
             {
                 name: 'Michele',
@@ -169,7 +171,45 @@ const app = new Vue ({
     methods: {
         selectContact(index){
             this.activeContact = index
-        }
+        },
+
+        sendMessage(index){
+            let newMessage = {
+                date : this.getDateTime(),
+                message : this.newMessageContainer,
+                status : 'sent'
+            };
+            // condizione per avere il messaggio di risposta solo se l'input inviato contiene dei caratteri
+            if(newMessage.message.length>0){
+                this.contacts[index].messages.push(newMessage);
+                // funziona per ottendere la "risposta al messaggio" dopo un tot tempo
+                setTimeout(() => {
+                    // variabile con il messaggio da ilserire in automatico
+                    let recievedMessage = {
+                        date:  this.getDateTime(),
+                        message: 'Ok',
+                        status : 'recieved'
+                    };
+                    this.contacts[index].messages.push(recievedMessage);
+                }, 1500) // faccio partire questa funzione dopo 1500 ms
+
+                // pulisco l'input una volta inviato il messaggio
+                this.newMessageContainer = ''; 
+                
+            };
+        },
+        // funzione per ottendere la data attuale
+        getDateTime(){
+            let now = new Date();
+            let dd = String(now.getDate()).padStart(2, '0');
+            let mm = String(now.getMonth() + 1).padStart(2, '0'); 
+            let yyyy = now.getFullYear();
+            let hour = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+            
+            return dd + '/' + mm + '/' + yyyy + ' ' +  hour +':'+ minutes +':'+ seconds;		
+        },
     },
 });
 

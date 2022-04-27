@@ -2,11 +2,19 @@
 --bg-notifiche:      #8EDAFC;
 --icons:             #B1B1B1;
 --bg-green:          #D5F9BA;
+--bg-dark-green:     #009688;
 --bg-active:         #E9EBEB;
 --bg-cornice:        #EAEAEA;
+--bg-back:           #c7c7c7a2;
 --nots-color:        #639DB8;
 }
-body{background-color: rgb(219, 217, 217);}
+body{
+    background-image: linear-gradient(to bottom, 
+    var(--bg-dark-green) 0px, 
+    var(--bg-dark-green) 160px, 
+    var(--bg-back) 160px, 
+    var(--bg-back) 100%);
+}
 img{width: 40px; border-radius: 50%;}
 input:active{border: none;}
 #left-cols {background-color:var(--bg-cornice); padding: 0; height: 90vh;}
@@ -34,7 +42,7 @@ input:active{border: none;}
     overflow-y: scroll;
 }
 .active{background-color: var(--bg-active);}
-.sent{background-color: var(--bg-green);align-self: flex-end;width: 35%;}
+.sent    {background-color: var(--bg-green);align-self: flex-end;width: 35%;}
 .recieved{background-color: white;align-self: start;width: 35%;}
 .box{padding: 10px; margin: 5px; border-radius: 10px;}
 .chat_msg{font-size: 14px;}
