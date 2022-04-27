@@ -28,16 +28,16 @@
                             <div id="left-cols" class="col-4">
                                 <div id="user" class="d-flex justify-content-between align-items-center px-3">
                                     <div class="user_img display-flex py-2">
-                                        <img src="./assets/img/avatar_io.jpg" alt="">
+                                        <img src="./assets/img/avatar_io.jpg" alt="" class="pointer">
                                         <span>Sofia</span>
                                     </div>
                                     <!-- /.user_img -->
 
                                     <div class="user_icons">
                                         <div class="icons">
-                                            <i class="fa-solid fa-circle-notch px-1"></i>
-                                            <i class="fa-solid fa-message px-1"></i>
-                                            <i class="fa-solid fa-ellipsis-vertical px-1"></i>
+                                            <i class="fa-solid fa-circle-notch px-1 pointer"></i>
+                                            <i class="fa-solid fa-message px-1 pointer"></i>
+                                            <i class="fa-solid fa-ellipsis-vertical px-1 pointer"></i>
                                         </div>
                                         <!-- /.icons -->
                                     </div>
@@ -54,7 +54,7 @@
                                         <div class="col-8">
                                             <div class="nots_text">
                                                 <p class="fw-bold">Ricevi notifiche di nuovi messaggi</p>
-                                                <p class="under_gray"><u>Attiva notifiche desktop</u></p>
+                                                <p class="under_gray pointer"><u>Attiva notifiche desktop</u></p>
                                             </div>
                                         </div>
                                     </div>
@@ -69,9 +69,9 @@
                                 </div>
                                 <!-- /.search -->
 
-                                <div class="avatars contact px-3 py-2" >
-                                    <div class="row py-2" v-for="(contact, index) in contacts"  
-                                    :class="index === activeContact ? 'active' :'' " @click="activeContact(index)">
+                                <div class="avatars contact pointer">
+                                    <div class="row py-2 m-0" v-for="(contact, index) in contacts"  
+                                    :class="index === activeContact ? 'active' :'' " @click="selectContact(index)">
                                         <div class="col-2 d-flex justify-content-center align-items-center">
                                             <img :src="'./assets/img/avatar' + contact.avatar + '.jpg'">
                                         </div>
@@ -93,7 +93,7 @@
                             <div id="right-cols" class="col-8 display-flex flex-column">
                                 <div id="user" class="d-flex justify-content-between align-items-center px-3">
                                     <div class="user_img d-flex py-2">
-                                        <img :src="'./assets/img/avatar' + contacts[activeContact].avatar + '.jpg'">
+                                        <img :src="'./assets/img/avatar' + contacts[activeContact].avatar + '.jpg'" class="pointer">
                                         <div class="avatar_text ps-2">
                                             <p class="fw-bold">{{contacts[activeContact].name}}</p>
                                             <p class="under_gray">Ultimo accesso oggi alle 12:00</p>
@@ -103,9 +103,9 @@
 
                                     <div class="user_icons">
                                         <div class="icons">
-                                            <i class="fa-solid fa-search px-1"></i>
-                                            <i class="fa-solid fa-paperclip px-1"></i>
-                                            <i class="fa-solid fa-ellipsis-vertical px-1"></i>
+                                            <i class="fa-solid fa-search px-1 pointer"></i>
+                                            <i class="fa-solid fa-paperclip px-1 pointer"></i>
+                                            <i class="fa-solid fa-ellipsis-vertical px-1 pointer"></i>
                                         </div>
                                         <!-- /.icons -->
                                     </div>
@@ -115,10 +115,10 @@
                                 
                                 <div class="chat_container">
                                     <div id="chat_box" class="col-12 d-flex flex-column p-5">
-                                        <div class="rounded-3 p-3 mb-3 sent" v-for="(element,index) in contacts[activeContact].messages" 
+                                        <div class="box sent" v-for="(element,index) in contacts[activeContact].messages" 
                                         :class="(element.status === 'sent') ? 'sent' : 'recieved'">
-                                            <h5 class="chat_msg">{{element.message}}</h5> 
-                                            <p class="chat_time text-end mt-4 mb-0">{{element.date}}</p>
+                                            <p class="chat_msg mb-1">{{element.message}}</p> 
+                                            <p class="chat_time text-end m-0">{{element.date}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -126,9 +126,9 @@
 
                                 <div class="chat_input">
                                     <div id="chat_input" class="d-flex justify-content-center align-items-center px-3">
-                                        <h5 class="px-3 m-0"><i class="far fa-smile"></i></h5>
+                                        <h5 class="px-3 m-0"><i class="far fa-smile pointer"></i></h5>
                                         <input class="mx-3 px-3 py-2 flex-grow-1 border-0 rounded-3" type="text" name="" id="" placeholder="Scrivi un messaggio">
-                                        <h5 class="px-3 m-0"><i class="fa-solid fa-microphone"></i></h5>
+                                        <h5 class="px-3 m-0"><i class="fa-solid fa-microphone pointer"></i></h5>
                                     </div>
                                 </div>
                                 <!-- /.chat_input -->

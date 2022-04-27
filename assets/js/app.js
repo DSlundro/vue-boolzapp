@@ -164,8 +164,12 @@ const app = new Vue ({
                     }
                 ],
             }
-        ]
+        ],
     },
-    methods: {},
+    methods: {
+        selectContact(index){
+            this.activeContact = index
+        }
+    },
 });
 
