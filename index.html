@@ -119,7 +119,7 @@
                                     <p class="chat_msg mb-1">{{element.message}}</p>
                                     <p class="chat_time text-end m-0">{{element.date.slice(-8,-3)}}</p>
                                     <div class="chat_icons">
-                                        <i class="fa-solid fa-chevron-down pointer bubi" @click="visibleDrop(index)"></i>
+                                        <i class="fa-solid fa-chevron-down pointer" @click="visibleDrop(index)"></i>
 
                                         <div class="dropdown_menu d-flex flex-column justify-content-center" v-if="dropdown.status && dropdown.activeMessage == index">
                                             <p class="pointer">Message info</p>

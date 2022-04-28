@@ -172,7 +172,7 @@ const app = new Vue({
         sendMessage(index) {
             let newMessage = {
                 date: this.getDateTime(),
-                message: this.newMessageContainer,
+                message: this.newMessageContainer.trim(),
                 status: 'sent'
             };
             // condizione per avere il messaggio di risposta solo se l'input inviato contiene dei caratteri
@@ -233,6 +233,7 @@ const app = new Vue({
             }
             //console.log(this.dropdown.activeMessage)
             //console.log(this.dropdown.status)
+
         },
 
 
