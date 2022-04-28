@@ -219,21 +219,15 @@ const app = new Vue({
         },
 
         visibleDrop(index) {
-            if (this.dropdown.activeMessage !== false && this.dropdown.activeMessage !== index) {
-                this.dropdown.activeMessage = false
-                this.dropdown.status = false
-            }
-            //console.log(this.dropdown.activeMessage)
-            //console.log(this.dropdown.status)
             this.dropdown.activeMessage = index
             if (this.dropdown.status) {
                 this.dropdown.status = false;
-            } else {
+            } 
+            else {
                 this.dropdown.status = true;
             }
             //console.log(this.dropdown.activeMessage)
             //console.log(this.dropdown.status)
-
         },
 
 
