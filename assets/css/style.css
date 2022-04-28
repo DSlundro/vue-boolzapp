@@ -44,10 +44,22 @@ input:active{border: none;}
 .active{background-color: var(--bg-active);}
 .sent    {background-color: var(--bg-green);align-self: flex-end;width: 35%;}
 .recieved{background-color: white;align-self: start;width: 35%;}
-.box{padding: 10px; margin: 5px; border-radius: 10px;}
+.box{padding: 10px; margin: 5px; border-radius: 10px; position: relative;}
 .chat_msg{font-size: 14px;}
 .chat_time{font-size: 9px; color: var(--icons);}
 .pointer{cursor: pointer;}
+.icons{position: absolute; top: 0; right: 10px; color: var(--icons);}
+.dropdown_menu{
+    background-color: white;
+    box-shadow: 0 0 3px 1px rgba(128, 128, 128, 0.329);
+    width: 170px;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+}
+.dropdown_menu p{margin: 0;padding: 5px;}
+.dropdown_menu p:hover{background-color: var(--bg-active); color: black;}
 
 #chat_input{height: 56px;}
 #chat_input h5{color: var(--icons);}

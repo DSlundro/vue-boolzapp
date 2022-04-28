@@ -4,6 +4,10 @@ const app = new Vue ({
         activeContact: 0,
         newMessageContainer: '',
         search:'',
+        dropdown: {
+            activeMessage: 0,
+            status: false,
+        },
         contacts: [
             {
                 name: 'Michele',
@@ -211,16 +215,27 @@ const app = new Vue ({
                 
                 return dd + '/' + mm + '/' + yyyy + ' ' +  hour +':'+ minutes +':'+ seconds;
             },
+            
         
         filterChat() {
             this.contacts.forEach(contact => {
                 if (contact.name.toLowerCase().includes(this.search.toLowerCase())) {
                     contact.visible = true
-                } else {
+                } 
+                else {
                     contact.visible = false
                 }
             });
         },
+        
+        visibleDrop(index){
+            this.activeMessage = index;
+            
+            
+            if(this.dropdown.status != true)
+            {this.dropdown.status = true;}
+            else{this.dropdown.status = false;}
+        }
     }
 });
 

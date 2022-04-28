@@ -124,6 +124,14 @@
                                         :class="(element.status === 'sent') ? 'sent' : 'recieved'">
                                             <p class="chat_msg mb-1">{{element.message}}</p> 
                                             <p class="chat_time text-end m-0">{{element.date.slice(-8,-3)}}</p>
+                                            <div class="icons">
+                                                <i class="fa-solid fa-angle-up pointer" @click="visibleDrop(index)"></i>
+                                                <div class="dropdown_menu d-flex flex-column justify-content-center"
+                                                v-if="dropdown.status === true ? 'd-block' : ''">
+                                                    <p class="pointer">Message info</p>
+                                                    <p class="pointer">Delete message</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
