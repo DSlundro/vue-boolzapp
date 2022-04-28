@@ -1,20 +1,18 @@
-const app = new Vue ({
+const app = new Vue({
     el: '#app',
     data: {
         activeContact: 0,
         newMessageContainer: '',
-        search:'',
+        search: '',
         dropdown: {
-            activeMessage: 0,
+            activeMessage: false,
             status: false,
         },
-        contacts: [
-            {
+        contacts: [{
                 name: 'Michele',
                 avatar: '_1',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Hai portato a spasso il cane?',
                         status: 'sent'
@@ -35,8 +33,7 @@ const app = new Vue ({
                 name: 'Fabio',
                 avatar: '_2',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '20/03/2020 16:30:00',
                         message: 'Ciao come stai?',
                         status: 'sent'
@@ -57,8 +54,7 @@ const app = new Vue ({
                 name: 'Samuele',
                 avatar: '_3',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '28/03/2020 10:10:40',
                         message: 'La Marianna va in campagna',
                         status: 'received'
@@ -79,8 +75,7 @@ const app = new Vue ({
                 name: 'Alessandro B.',
                 avatar: '_4',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Lo sai che ha aperto una nuova pizzeria?',
                         status: 'sent'
@@ -96,8 +91,7 @@ const app = new Vue ({
                 name: 'Alessandro L.',
                 avatar: '_5',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Ricordati di chiamare la nonna',
                         status: 'sent'
@@ -113,8 +107,7 @@ const app = new Vue ({
                 name: 'Claudia',
                 avatar: '_6',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Ciao Claudia, hai novità?',
                         status: 'sent'
@@ -135,8 +128,7 @@ const app = new Vue ({
                 name: 'Federico',
                 avatar: '_7',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Fai gli auguri a Martina che è il suo compleanno!',
                         status: 'sent'
@@ -152,8 +144,7 @@ const app = new Vue ({
                 name: 'Davide',
                 avatar: '_8',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Ciao, andiamo a mangiare la pizza stasera?',
                         status: 'received'
@@ -174,68 +165,81 @@ const app = new Vue ({
     },
 
     methods: {
-        selectContact(index){
+        selectContact(index) {
             this.activeContact = index
         },
 
-        sendMessage(index){
+        sendMessage(index) {
             let newMessage = {
-                date : this.getDateTime(),
-                message : this.newMessageContainer,
-                status : 'sent'
+                date: this.getDateTime(),
+                message: this.newMessageContainer,
+                status: 'sent'
             };
             // condizione per avere il messaggio di risposta solo se l'input inviato contiene dei caratteri
-            if(newMessage.message.length>0){
+            if (newMessage.message.length > 0) {
                 this.contacts[index].messages.push(newMessage);
                 // funziona per ottendere la "risposta al messaggio" dopo un tot tempo
                 setTimeout(() => {
-                    // variabile con il messaggio da ilserire in automatico
-                    let recievedMessage = {
-                        date:  this.getDateTime(),
-                        message: 'Ok',
-                        status : 'recieved'
-                    };
-                    this.contacts[index].messages.push(recievedMessage);
-                }, 1500) // faccio partire questa funzione dopo 1500 ms
+                        // variabile con il messaggio da ilserire in automatico
+                        let recievedMessage = {
+                            date: this.getDateTime(),
+                            message: 'Ok',
+                            status: 'recieved'
+                        };
+                        this.contacts[index].messages.push(recievedMessage);
+                    }, 1500) // faccio partire questa funzione dopo 1500 ms
 
                 // pulisco l'input una volta inviato il messaggio
-                this.newMessageContainer = ''; 
-                
+                this.newMessageContainer = '';
+
             };
         },
         // funzione per ottendere la data attuale
-        getDateTime(){
+        getDateTime() {
             let now = new Date();
-				let dd = String(now.getDate()).padStart(2, '0');
-				let mm = String(now.getMonth() + 1).padStart(2, '0'); 
-				let yyyy = now.getFullYear();
-				let hour = now.getHours();
-				let minutes = String(now.getMinutes()).padStart(2, "0");
-				let seconds = String(now.getSeconds()).padStart(2, "0");
-                
-                return dd + '/' + mm + '/' + yyyy + ' ' +  hour +':'+ minutes +':'+ seconds;
-            },
-            
-        
+            let dd = String(now.getDate()).padStart(2, '0');
+            let mm = String(now.getMonth() + 1).padStart(2, '0');
+            let yyyy = now.getFullYear();
+            let hour = now.getHours();
+            let minutes = String(now.getMinutes()).padStart(2, "0");
+            let seconds = String(now.getSeconds()).padStart(2, "0");
+
+            return dd + '/' + mm + '/' + yyyy + ' ' + hour + ':' + minutes + ':' + seconds;
+        },
+
+
         filterChat() {
             this.contacts.forEach(contact => {
                 if (contact.name.toLowerCase().includes(this.search.toLowerCase())) {
                     contact.visible = true
-                } 
-                else {
+                } else {
                     contact.visible = false
                 }
             });
         },
-        
-        visibleDrop(index){
-            this.activeMessage = index;
-            
-            
-            if(this.dropdown.status != true)
-            {this.dropdown.status = true;}
-            else{this.dropdown.status = false;}
-        }
+
+        visibleDrop(index) {
+            if (this.dropdown.activeMessage !== false && this.dropdown.activeMessage !== index) {
+                this.dropdown.activeMessage = false
+                this.dropdown.status = false
+            }
+            //console.log(this.dropdown.activeMessage)
+            //console.log(this.dropdown.status)
+            this.dropdown.activeMessage = index
+            if (this.dropdown.status) {
+                this.dropdown.status = false;
+            } else {
+                this.dropdown.status = true;
+            }
+            //console.log(this.dropdown.activeMessage)
+            //console.log(this.dropdown.status)
+        },
+
+
+        deleteMessage(index) {
+            this.contacts[this.activeContact].messages.splice(index, 1)
+        },
+
+
     }
 });
-
